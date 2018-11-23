@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://www.jsonstore.io/6ae98ac27ab249788f9adf6e4b6a859379f90ae9530d1552d9d2eaee1dbd75dd'
+const SERVER_URL = 'https://www.jsonstore.io/df5d931f3d12b166bdd9acc7b21c5346be91e20f272bd41857a8b7edb0897e21'
 
 class TodoItem extends React.Component {
 	render() {
@@ -147,3 +147,17 @@ ReactDOM.render(
 	<App />,
 	document.getElementById('root')
 );
+
+// SERVICE WORKER INSTALL
+
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', function () {
+		navigator.serviceWorker.register('/sw.js').then(function (registration) {
+			// Registration was successful
+			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		}, function (err) {
+			// registration failed :(
+			console.log('ServiceWorker registration failed: ', err);
+		});
+	});
+}
